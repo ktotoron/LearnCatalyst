@@ -1,0 +1,15 @@
+*.log
+*.conf
+*.jpg
+*.png
+*.ico
+
+#allow
+!*.pl
+!*.pm
+!*.t
+!*.PL
+
+
+
+
