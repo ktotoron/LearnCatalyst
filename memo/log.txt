@@ -1,0 +1,2 @@
+script/learncatalyst_create.pl model LearnCatalyst DBIC::Schema LearnCatalyst::Schema create=static dbi:mysql:cataldb cataluser catalpass AutoCommit=1 on_connect_do='["SET NAMES utf8"]'
+
