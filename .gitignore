@@ -3,7 +3,6 @@
 *.jpg
 *.png
 *.ico
-*.swp
 
 #allow
 !*.pl
