@@ -32,6 +32,9 @@ sub intro :Local {
   $c->response->body('HelloWorld');
 }
 
+# [/linux/sample]でアクセス可能になる
+__PACKAGE__->config->{'namespace'} = 'linux/sample';
+
 
 
 =encoding utf8
