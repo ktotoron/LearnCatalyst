@@ -27,7 +27,8 @@ sub index :Path :Args(0) {
     $c->response->body('Matched LearnCatalyst::Controller::Ctrl::Attr in Ctrl::Attr.');
 }
 
-sub intro :Global {
+# [ctrl/attr/Path]でアクセス可能
+sub intro :Path('Path') {
   my ($self, $c) = @_;
   $c->response->body('HelloWorld');
 }
