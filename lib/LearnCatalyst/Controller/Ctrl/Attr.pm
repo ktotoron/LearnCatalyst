@@ -27,13 +27,13 @@ sub index :Path :Args(0) {
     $c->response->body('Matched LearnCatalyst::Controller::Ctrl::Attr in Ctrl::Attr.');
 }
 
-sub intro :Local {
+sub intro :Global {
   my ($self, $c) = @_;
   $c->response->body('HelloWorld');
 }
 
 # [/linux/sample]でアクセス可能になる
-__PACKAGE__->config->{'namespace'} = 'linux/sample';
+#__PACKAGE__->config->{'namespace'} = 'linux/sample';
 
 
 
