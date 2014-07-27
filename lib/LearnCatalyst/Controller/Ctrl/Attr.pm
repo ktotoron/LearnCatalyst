@@ -50,6 +50,35 @@ sub args_attr :Path('/args') :Args(2) {
 }
 
 
+# Chained [http://localhost/first/second/1111/third]で呼び出し可能
+
+# Chained : 連鎖するアクションの定義
+# PathPart : 部分パス名を指定
+# CaptureArgs : パス情報の引数を制限
+# 最上位アクション(/first)
+sub chain_top :Chained('/') :PathPart('first') :CaptureArgs(0) {
+  my ($self, $c) = @_;
+  $c->stash->{body} = '<p> chain_top_action </p>';
+}
+
+
+# Chained_topから連鎖してくる
+# 連鎖するアクション
+sub chain_second :Chained('chain_top') :PathPart('second') :CaptureArgs(1) {
+  my ($self, $c, $id) = @_;
+  $c->stash->{body} .= "<p> chain_second_action : ${id} </p>";
+}
+
+
+# Chained_topから連鎖してくる
+# 連鎖するアクション
+sub chain_third :Chained('chain_second') :PathPart('third') {
+  my ($self, $c, $id) = @_;
+  $c->stash->{body} .= '<p> chain_third_action </p>';
+  $c->response->body($c->stash->{body});
+}
+
+
 
 
 =encoding utf8
