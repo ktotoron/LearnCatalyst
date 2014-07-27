@@ -2,6 +2,7 @@ package LearnCatalyst::Controller::Ctrl::Attr;
 use Moose;
 use namespace::autoclean;
 
+
 BEGIN { extends 'Catalyst::Controller'; }
 
 =head1 NAME
@@ -27,14 +28,27 @@ sub index :Path :Args(0) {
     $c->response->body('Matched LearnCatalyst::Controller::Ctrl::Attr in Ctrl::Attr.');
 }
 
-# [ctrl/attr/Path]でアクセス可能
-sub intro :Path('Path') {
-  my ($self, $c) = @_;
-  $c->response->body('HelloWorld');
+
+# regex
+sub regex_attr :Regex('^article/(\d{4})\.html$') {
+  my ( $self, $c ) = @_;
+  my $num = $c->request->captures->[0];
+  $c->response->body("記事番号：${num}");
 }
 
-# [/linux/sample]でアクセス可能になる
-#__PACKAGE__->config->{'namespace'} = 'linux/sample';
+# regex
+sub regex_attr_local :LocalRegex('^article/(\d{4})\.html$') {
+  my ( $self, $c ) = @_;
+  my $num = $c->request->captures->[0];
+  $c->response->body("記事番号：${num}");
+}
+
+sub args_attr :Path('/args') :Args(2) {
+  my ( $self, $c ) = @_;
+  my $args = $c->request->args;
+  $c->response->body("path_info: " . join(', ', @$args));
+}
+
 
 
 
