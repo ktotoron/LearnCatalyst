@@ -1,0 +1,14 @@
+-rw-r--r--@  1 takizawakazuya  staff    1152466  7 26 23:36 AdobeFlashPlayerInstaller_14_ltrosxd_aaa_aih.dmg
+-rw-r--r--@  1 takizawakazuya  staff  119591853  5 16 22:24 VirtualBox-4.3.12-93733-OSX.dmg
+<html>
+<head>
+<title>入力値エラー</title>
+</head>
+<body>
+<h3>以下のエラーが発生しました。</h3>
+[% FOREACH item = errors %]
+<li>[% item %]</li>
+[% END %]
+</ul>
+</body>
+</html>
